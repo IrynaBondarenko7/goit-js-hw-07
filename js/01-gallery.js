@@ -7,7 +7,7 @@ const galleryContainer = document.querySelector(".gallery");
 //create div in which we place img
 const imgElements = galleryItems
   .map((item) => {
-    return `<div class="gallery-item"><a class="gallery-item" href="${item.original}"><img class="gallery__image" src="${item.preview}" alt="${item.description}" data-source="${item.original}"/></a></div>`;
+    return `<div class="gallery-item"><a class="gallery-link" href="${item.original}"><img class="gallery__image" src="${item.preview}" alt="${item.description}" data-source="${item.original}"/></a></div>`;
   })
   .join("");
 
