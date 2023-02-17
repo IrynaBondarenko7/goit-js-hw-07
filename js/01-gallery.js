@@ -24,14 +24,24 @@ function onImgClick(event) {
 
   const imgSelected = event.target.getAttribute("data-source");
 
-  const instance = basicLightbox.create(`
+  const instance = basicLightbox.create(
+    `
     <img src="${imgSelected}" width="800" height="600">
-`);
+`,
+    //the option object
+    {
+      onShow: () => {
+        document.addEventListener("keydown", onEscapePress);
+      },
+      onClose: () => {
+        document.removeEventListener("keydown", onEscapePress);
+      },
+    }
+  );
+
   instance.show();
 
   //create function closing escape key press
-  galleryContainer.addEventListener("keydown", onEscapePress);
-
   function onEscapePress(event) {
     if (event.code === "Escape") {
       instance.close();
